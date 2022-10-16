@@ -1,2 +1,1 @@
 # edgedb dev environment template
-
