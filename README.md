@@ -21,6 +21,12 @@ open web ui in browser
 ## Features
 
 - pre installed edgedb-cli
-- launch edgedb-docker container with postgres backend
+- included edgedb-docker container with postgres backend
 - web ui enabled
 - python 3, node 16 language support
+
+## Trouble shooting
+
+When using web ui on localhost, chrome does not allow ssl connection to localhost due to security issues
+
+Change the `chrome://flags/#allow-insecure-localhost` flag to `enabled`
