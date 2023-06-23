@@ -51,8 +51,8 @@ services:
     depends_on:
     - postgres
     healthcheck:
-      # check if :5656 port is available. Rootpath returns a 404. So we check /ui instead.
-      test: [ "CMD", "curl", "-f", "http://localhost:5656/server/status/alive" ]
+      # check if instance is ready
+      test: [ "CMD", "curl", "-f", "http://localhost:5656/server/status/ready" ]
       interval: 30s
       timeout: 10s
       retries: 3
