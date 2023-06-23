@@ -50,6 +50,13 @@ services:
     restart: unless-stopped
     depends_on:
     - postgres
+    healthcheck:
+      # check if :5656 port is available. Rootpath returns a 404. So we check /ui instead.
+      test: [ "CMD", "curl", "-f", "http://localhost:5656/ui" ]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
     environment:
       EDGEDB_SERVER_ADMIN_UI: enabled
       EDGEDB_SERVER_SECURITY: insecure_dev_mode

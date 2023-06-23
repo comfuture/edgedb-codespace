@@ -23,7 +23,7 @@ open web ui in browser
 - pre installed edgedb-cli
 - included edgedb-docker container with postgres backend
 - web ui enabled
-- python 3, node 16 language support
+- python 3, node 18 language support
 
 ## Trouble shooting
 
