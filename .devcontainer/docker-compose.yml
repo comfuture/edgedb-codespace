@@ -46,10 +46,17 @@ services:
     # (Adding the "ports" property to this file will not forward from a Codespace.)
 
   edgedb:
-    image: edgedb/edgedb:2
+    image: edgedb/edgedb:3
     restart: unless-stopped
     depends_on:
     - postgres
+    healthcheck:
+      # check if instance is ready
+      test: [ "CMD", "curl", "-f", "http://localhost:5656/server/status/ready" ]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
     environment:
       EDGEDB_SERVER_ADMIN_UI: enabled
       EDGEDB_SERVER_SECURITY: insecure_dev_mode
