@@ -1,6 +1,8 @@
-# EdgeDB dev env
+# EdgeDB devcontainer
 
 devcontainer for edgedb with python and nodejs
+
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://github.com/codespaces/new/?repo=552441567&ref=main&hide_repo_select=true&skip_quickstart=true&machine=basicLinux32gb)
 
 ## Usage
 
