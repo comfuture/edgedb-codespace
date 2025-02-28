@@ -1,0 +1,5 @@
+[instance]
+server-version = "6.1"
+
+[hooks]
+schema.update.after = "uvx gel-py"
