@@ -16,7 +16,7 @@ services:
     volumes:
       - ..:/workspace:cached 
     depends_on:
-    - edgedb
+    - geldata
  
 
     # Overrides default command so things don't shut down after the process ends.
@@ -45,8 +45,8 @@ services:
     # Add "forwardPorts": ["5432"] to **devcontainer.json** to forward PostgreSQL locally.
     # (Adding the "ports" property to this file will not forward from a Codespace.)
 
-  edgedb:
-    image: edgedb/edgedb:3
+  geldata:
+    image: geldata/gel:latest
     restart: unless-stopped
     depends_on:
     - postgres
@@ -58,18 +58,18 @@ services:
       retries: 3
       start_period: 40s
     environment:
-      EDGEDB_SERVER_ADMIN_UI: enabled
-      EDGEDB_SERVER_SECURITY: insecure_dev_mode
-      EDGEDB_PORT: "5656"
-      EDGEDB_SERVER_PASSWORD: edgedb
-      EDGEDB_SERVER_BACKEND_DSN: postgres://postgres:postgres@postgres:5432/postgres
+      GEL_SERVER_ADMIN_UI: enabled
+      GEL_SERVER_SECURITY: insecure_dev_mode
+      GEL_PORT: "5656"
+      GEL_SERVER_PASSWORD: geldata
+      GEL_SERVER_BACKEND_DSN: postgres://postgres:postgres@postgres:5432/postgres
     volumes:
     - ./dbschema:/dbschema
-    - ./edgedb_credentials:/root/.config/edgedb/credentials
-    - edgedb-data:/var/lib/edgedb/data
+    - ./gel_credentials:/root/.config/edgedb/credentials
+    - gel-data:/var/lib/gel/data
     ports:
     - "5656:5656"
 
 volumes:
   postgres-data:
-  edgedb-data:
+  gel-data:

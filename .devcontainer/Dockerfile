@@ -8,10 +8,10 @@ ENV PYTHONUNBUFFERED 1
 ARG NODE_VERSION="none"
 RUN if [ "${NODE_VERSION}" != "none" ]; then su vscode -c "umask 0002 && . /usr/local/share/nvm/nvm.sh && nvm install ${NODE_VERSION} 2>&1"; fi
 
-# setup edgedb-cli
-ADD https://sh.edgedb.com/ /tmp/setup_edgedb_cli.sh
-RUN chmod 755 /tmp/setup_edgedb_cli.sh
-RUN su vscode -c "bash /tmp/setup_edgedb_cli.sh -y"
+# setup geldata-cli
+ADD https://geldata.com/sh /tmp/setup_geldata_cli.sh
+RUN chmod 755 /tmp/setup_geldata_cli.sh
+RUN su vscode -c "bash /tmp/setup_geldata_cli.sh -y"
 
 # [Optional] If your requirements rarely change, uncomment this section to add them to the image.
 # COPY requirements.txt /tmp/pip-tmp/

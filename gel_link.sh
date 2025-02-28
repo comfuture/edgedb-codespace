@@ -5,11 +5,11 @@
 MAX_TRIES=5
 COUNT=0
 
-function edgedb_link() {
-  echo edgedb | edgedb instance link \
+function gel_link() {
+  gel instance link \
     --overwrite \
-    --dsn edgedb://edgedb:edgedb@edgedb:5656 \
-    --password-from-stdin \
+    --dsn gel://geldata:geldata@geldata:5656/geldata \
+    --no-password \
     --non-interactive \
     --trust-tls-cert \
     dev
@@ -17,8 +17,8 @@ function edgedb_link() {
 
 while true
 do
-  if edgedb_link; then
-    echo "edgedb instance successfully linked"
+  if gel_link; then
+    echo "gel instance successfully linked"
     exit 0
   else
     COUNT=$((COUNT+1))
